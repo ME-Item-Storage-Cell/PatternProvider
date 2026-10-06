@@ -8,8 +8,9 @@ const app = new App({
     socketMode: true
 });
 
-
 require("./commands/ping")(app);
+require("./shortcuts/write_pattern")(app);
+require("./databases/create_table");
 
 (async () => {
     await app.start();
