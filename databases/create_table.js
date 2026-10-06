@@ -7,14 +7,16 @@ db.exec(`
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         user_id TEXT NOT NULL,
         name TEXT NOT NULL,
-        text TEXT
+        text TEXT, 
+        UNIQUE(name, text)
     );
 
     CREATE TABLE IF NOT EXISTS files (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        message_id INTEGER NOT NULL,
+        pattern_id INTEGER NOT NULL,
         file_id TEXT NOT NULL,
-        FOREIGN KEY (message_id) REFERENCES messages(id)
+        UNIQUE(pattern_id, file_id),
+        FOREIGN KEY (pattern_id) REFERENCES patterns(id)
     );
     
 `);
